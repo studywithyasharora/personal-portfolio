@@ -247,7 +247,7 @@ export const projects: Project[] = [
 {
   id: 'exam-pipeline',
   title: 'Student Exam Performance Prediction',
-  liveUrl: 'http://3.108.235.141:8080/',
+  liveUrl: 'https://spi.yasharora.online/predictdata',
   category: 'MLOps / Production ML',
   year: '2026',
   summary:
