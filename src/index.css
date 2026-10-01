@@ -1,0 +1,115 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+html {
+  background: #0a0a0b;
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+body {
+  background: #0a0a0b;
+  color: #f4f4f5;
+}
+/* Safety net against sideways scrolling; `clip` (unlike `hidden`) keeps sticky elements working */
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+::selection {
+  background: rgba(99, 102, 241, 0.45);
+  color: #ffffff;
+}
+section[id] {
+  scroll-margin-top: 80px;
+}
+*:focus-visible {
+  outline: 2px solid #22d3ee;
+  outline-offset: 3px;
+}
+/* Hero technical grid backdrop */
+.hero-grid {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000 25%, transparent 75%);
+}
+/* Underline that draws on hover */
+.link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 2px;
+  transition: background-size 250ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+a:hover .link-draw,
+a:focus-visible .link-draw,
+.link-draw:hover {
+  background-size: 100% 1px;
+}
+/* Film grain for depth */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.hero-fade-mask {
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 30%, transparent 80%);
+}
+/* Tech ribbon */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  animation: marquee 50s linear infinite;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+/* Data packet travelling along the process rail */
+.process-packet {
+  animation: packet 3.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes packet {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .process-packet {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
